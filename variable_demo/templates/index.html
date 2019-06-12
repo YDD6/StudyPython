@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{#    {{ person.username }}#}
+{#{% if age < 18 %}#}
+{#    <p>打你吗的游戏，滚去学习</p>#}
+{#    {% elif age == 18 %}#}
+{#    <p>玩的愉快啊老铁</p>#}
+{#    {% else %}#}
+{#    <p>谢谢你</p>#}
+{#{% endif %}#}
+{#{% for key,value in persons.items %}#}
+{#    <p>{{ key }}</p>#}
+{#    <p>{{ value }}</p>#}
+{#{% endfor %}#}
+<table>
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>书名</th>
+        <th>作者</th>
+        <th>价格</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for book in books  %}
+        {% if forloop.first %}
+            <tr style="background-color: pink">
+        {% elif forloop.last %}
+            <tr style="background-color: greenyellow">
+            {% else %}
+                 <tr>
+        {% endif %}
+            <td>{{ forloop.counter }}</td>
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.price }}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+<ul>
+    {% for comment in  comments %}
+        <li>
+            {{ comment }}
+        </li>
+        {% empty %}
+        <li>没有任何评论</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
